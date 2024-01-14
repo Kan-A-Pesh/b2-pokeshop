@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>PokeSHOP!</title>
+
+        <script src="js/controllers/cartController.js" defer></script>
+        <script src="js/pages/product.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <h1>PokeSHOP!</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="pokemon-card">
+                <h1 id="pokemon-name"></h1>
+                <img id="pokemon-image" src="" alt="" />
+            </div>
+            <div class="buy-card">
+                <h2>Buy it now!</h2>
+                <div class="content">
+                    <div class="input">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" value="1" />
+                    </div>
+                    <button id="add-to-cart" class="button">Add to cart</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
