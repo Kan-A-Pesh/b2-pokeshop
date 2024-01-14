@@ -33,6 +33,8 @@ const populatePokemonData = async () => {
 
     // Fetch the initial data
     const initialData = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=20");
+    let nextUrl = initialData.next;
+    let isLoading = false;
 
     // Create Pokemon cards for the initial data
     initialData.results.forEach(async (pokemon) => {
@@ -45,8 +47,15 @@ const populatePokemonData = async () => {
     window.addEventListener("scroll", async () => {
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
+        if (isLoading) {
+            return;
+        }
+
         if (scrollTop + clientHeight >= scrollHeight - 10) {
-            const nextData = await fetchData(initialData.next);
+            isLoading = true;
+            const nextData = await fetchData(nextUrl);
+            isLoading = false;
+            nextUrl = nextData.next;
 
             nextData.results.forEach(async (pokemon) => {
                 const pokemonData = await fetchData(pokemon.url);
